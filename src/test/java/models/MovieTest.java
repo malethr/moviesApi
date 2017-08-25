@@ -32,9 +32,9 @@ public class MovieTest {
     }
 
     @Test
-    public void getReleaseYearReturnsCorrectReleaseYear() throws Exception {
+    public void getYearReturnsCorrectYear() throws Exception {
         Movie testMovie = setupMovie();
-        assertEquals("2010", testMovie.getReleaseYear());
+        assertEquals("2010", testMovie.getYear());
     }
     @Test
     public void getDirectorReturnsCorrectDirector() throws Exception {
@@ -63,10 +63,10 @@ public class MovieTest {
     }
 
     @Test
-    public void setReleaseYearSetsCorrectReleaseYear() throws Exception {
+    public void setYearSetsCorrectYear() throws Exception {
         Movie testMovie = setupMovie();
-        testMovie.setReleaseYear("2013");
-        assertNotEquals("2010", testMovie.getReleaseYear());
+        testMovie.setYear("2013");
+        assertNotEquals("2010", testMovie.getYear());
     }
     @Test
     public void setDirectedBySetsCorrectDirector() throws Exception {

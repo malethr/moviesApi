@@ -6,7 +6,7 @@ package models;
 public class Movie {
     private String title;
     private String description;
-    private String releaseYear;
+    private String year;
     private String director;
     private String trailer;
     private int id;
@@ -14,15 +14,15 @@ public class Movie {
     public Movie(String title, String description) {
         this.title = title;
         this.description = description;
-        this.releaseYear = "not available";
+        this.year = "not available";
         this.director = "not available";
         this.trailer = "not available";
     }
 
-    public Movie(String title, String description, String releaseYear, String director, String trailer) {
+    public Movie(String title, String description, String year, String director, String trailer) {
         this.title = title;
         this.description = description;
-        this.releaseYear = releaseYear;
+        this.year = year;
         this.director = director;
         this.trailer = trailer;
     }
@@ -43,12 +43,12 @@ public class Movie {
         this.description = description;
     }
 
-    public String getReleaseYear() {
-        return releaseYear;
+    public String getYear() {
+        return year;
     }
 
-    public void setReleaseYear(String releaseYear) {
-        this.releaseYear = releaseYear;
+    public void setYear(String year) {
+        this.year = year;
     }
 
     public String getDirector() {
@@ -85,7 +85,7 @@ public class Movie {
         if (id != movie.id) return false;
         if (!title.equals(movie.title)) return false;
         if (!description.equals(movie.description)) return false;
-        if (releaseYear != null ? !releaseYear.equals(movie.releaseYear) : movie.releaseYear != null) return false;
+        if (year != null ? !year.equals(movie.year) : movie.year != null) return false;
         if (director != null ? !director.equals(movie.director) : movie.director != null) return false;
         return trailer != null ? trailer.equals(movie.trailer) : movie.trailer == null;
     }
@@ -94,7 +94,7 @@ public class Movie {
     public int hashCode() {
         int result = title.hashCode();
         result = 31 * result + description.hashCode();
-        result = 31 * result + (releaseYear != null ? releaseYear.hashCode() : 0);
+        result = 31 * result + (year != null ? year.hashCode() : 0);
         result = 31 * result + (director != null ? director.hashCode() : 0);
         result = 31 * result + (trailer != null ? trailer.hashCode() : 0);
         result = 31 * result + id;

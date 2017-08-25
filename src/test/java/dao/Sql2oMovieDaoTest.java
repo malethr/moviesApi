@@ -52,8 +52,25 @@ public class Sql2oMovieDaoTest {
     }
 
     @Test
-    public void nomoviesReturnsEmptyList() throws Exception {
+    public void noMoviesReturnsEmptyList() throws Exception {
         assertEquals(0, movieDao.getAll().size());
+    }
+
+    @Test
+    public void existingMoviesCanBeFoundById() throws Exception {
+        Movie movie = setupMovie();
+        movieDao.add(movie);
+        Movie foundMovie = movieDao.findById(movie.getId());
+        assertEquals(movie, foundMovie);
+    }
+
+    @Test
+    public void updateChangesMovieContent() throws Exception {
+        Movie movie = setupMovie();
+        movieDao.add(movie);
+        movieDao.update(movie.getId(), "The Founder","The story of Ray Kroc","not available","not available","not available");
+        Movie updatedMovie = movieDao.findById(movie.getId());
+        assertNotEquals(movie, updatedMovie);
     }
 
     @Test

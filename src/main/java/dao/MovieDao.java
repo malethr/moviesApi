@@ -12,7 +12,7 @@ public interface MovieDao {
     void add(Movie movie);  // Create
     List<Movie> getAll();   // Read
     Movie findById(int id); // Read by Id
-    void update(int id, String title, String description, String releaseYear, String director, String trailer); // Update
+    void update(int id, String title, String description, String year, String director, String trailer); // Update
     void deleteById(int id);// Delete
 
 //    void addMovieToMovieType(Movie movie, MovieTypeDao movieType);

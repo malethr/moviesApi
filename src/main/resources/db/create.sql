@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS movies (
  title VARCHAR,
  description VARCHAR,
  releaseyear VARCHAR,
- directedby VARCHAR,
+ director VARCHAR,
  trailer VARCHAR
 );
 

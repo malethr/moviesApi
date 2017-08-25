@@ -89,7 +89,6 @@ public class MovieTest {
 
     public Movie setupAltMovie (){
         return new Movie("Inside Job","Academy award winning documentary and for me the best movie on the Financial crisis made.");
-
     }
 
 }

@@ -37,9 +37,9 @@ public class MovieTest {
         assertEquals("2010", testMovie.getReleaseYear());
     }
     @Test
-    public void getDirectedbyReturnsCorrectDirector() throws Exception {
+    public void getDirectorReturnsCorrectDirector() throws Exception {
         Movie testMovie = setupMovie();
-        assertEquals("Charles Ferguson", testMovie.getDirectedBy());
+        assertEquals("Charles Ferguson", testMovie.getDirector());
     }
 
     @Test
@@ -71,8 +71,8 @@ public class MovieTest {
     @Test
     public void setDirectedBySetsCorrectDirector() throws Exception {
         Movie testMovie = setupMovie();
-        testMovie.setDirectedBy("Martin Scorsese");
-        assertNotEquals("Charles Ferguson", testMovie.getDirectedBy());
+        testMovie.setDirector("Martin Scorsese");
+        assertNotEquals("Charles Ferguson", testMovie.getDirector());
     }
 
     @Test

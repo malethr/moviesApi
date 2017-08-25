@@ -7,7 +7,7 @@ public class Movie {
     private String title;
     private String description;
     private String releaseYear;
-    private String directedBy;
+    private String director;
     private String trailer;
     private int id;
 
@@ -15,15 +15,15 @@ public class Movie {
         this.title = title;
         this.description = description;
         this.releaseYear = "not available";
-        this.directedBy = "not available";
+        this.director = "not available";
         this.trailer = "not available";
     }
 
-    public Movie(String title, String description, String releaseYear, String directedBy, String trailer) {
+    public Movie(String title, String description, String releaseYear, String director, String trailer) {
         this.title = title;
         this.description = description;
         this.releaseYear = releaseYear;
-        this.directedBy = directedBy;
+        this.director = director;
         this.trailer = trailer;
     }
 
@@ -51,12 +51,12 @@ public class Movie {
         this.releaseYear = releaseYear;
     }
 
-    public String getDirectedBy() {
-        return directedBy;
+    public String getDirector() {
+        return director;
     }
 
-    public void setDirectedBy(String directedBy) {
-        this.directedBy = directedBy;
+    public void setDirector(String director) {
+        this.director = director;
     }
 
     public String getTrailer() {
@@ -86,7 +86,7 @@ public class Movie {
         if (!title.equals(movie.title)) return false;
         if (!description.equals(movie.description)) return false;
         if (releaseYear != null ? !releaseYear.equals(movie.releaseYear) : movie.releaseYear != null) return false;
-        if (directedBy != null ? !directedBy.equals(movie.directedBy) : movie.directedBy != null) return false;
+        if (director != null ? !director.equals(movie.director) : movie.director != null) return false;
         return trailer != null ? trailer.equals(movie.trailer) : movie.trailer == null;
     }
 
@@ -95,7 +95,7 @@ public class Movie {
         int result = title.hashCode();
         result = 31 * result + description.hashCode();
         result = 31 * result + (releaseYear != null ? releaseYear.hashCode() : 0);
-        result = 31 * result + (directedBy != null ? directedBy.hashCode() : 0);
+        result = 31 * result + (director != null ? director.hashCode() : 0);
         result = 31 * result + (trailer != null ? trailer.hashCode() : 0);
         result = 31 * result + id;
         return result;

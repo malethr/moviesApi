@@ -6,10 +6,23 @@ package models;
 public class Movie {
     private String title;
     private String description;
-    private String genre;
     private String releaseDate;
     private String trailer;
     private int id;
+
+    public Movie(String title, String description) {
+        this.title = title;
+        this.description = description;
+        this.releaseDate = "not available";
+        this.trailer = "not available";
+    }
+
+    public Movie(String title, String description, String releaseDate, String trailer) {
+        this.title = title;
+        this.description = description;
+        this.releaseDate = releaseDate;
+        this.trailer = trailer;
+    }
 
     public String getTitle() {
         return title;
@@ -25,14 +38,6 @@ public class Movie {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
     }
 
     public String getReleaseDate() {

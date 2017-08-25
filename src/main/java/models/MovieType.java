@@ -4,20 +4,20 @@ package models;
  * Created by mariathomas on 8/25/17.
  */
 public class MovieType {
-    private String name;
+    private String type;
     private int id;
 
-    public MovieType(String name, int id) {
-        this.name = name;
+    public MovieType(String type, int id) {
+        this.type = type;
         this.id = id;
     }
 
     public String getName() {
-        return name;
+        return type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String type) {
+        this.type = type;
     }
 
     public int getId() {
@@ -36,13 +36,15 @@ public class MovieType {
         MovieType movieType = (MovieType) o;
 
         if (id != movieType.id) return false;
-        return name.equals(movieType.name);
+        return type.equals(movieType.type);
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
+        int result = type.hashCode();
         result = 31 * result + id;
         return result;
     }
+
+
 }

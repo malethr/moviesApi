@@ -7,7 +7,7 @@ public class Movie {
     private String title;
     private String description;
     private String releaseDate;
-    private String directedBy:
+    private String directedBy;
     private String trailer;
     private int id;
 

@@ -1,12 +1,15 @@
 package models;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * Created by mariathomas on 8/25/17.
  */
 public class Review {
+
     private String writtenBy;
     private int rating;
     private Timestamp createdAt;
@@ -14,10 +17,11 @@ public class Review {
     private int movieId;
     private String content;
 
+
     public Review(String writtenBy, int rating, String content, int movieId) {
         this.writtenBy = writtenBy;
         this.rating = rating;
-        this.createdAt = Timestamp.valueOf(LocalDateTime.now());
+        this.createdAt =  Timestamp.valueOf(LocalDateTime.now());
         this.content = content;
         this.movieId = movieId;
     }
@@ -38,8 +42,11 @@ public class Review {
         this.rating = rating;
     }
 
-    public Timestamp getCreatedAt() {
-        return createdAt;
+    public String getCreatedAt() {
+        Date createdAtAsDate = this.createdAt;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = sdf.format(createdAtAsDate);
+        return formattedDate;
     }
 
     public void setCreatedAt(Timestamp createdAt) {

@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS reviews (
  id int PRIMARY KEY auto_increment,
  writtenby VARCHAR,
  rating VARCHAR,
+ content VARCHAR,
  createdat TIMESTAMP,
  movieid INTEGER
 );

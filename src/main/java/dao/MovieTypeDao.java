@@ -14,7 +14,7 @@ public interface MovieTypeDao {
     void addMovieTypeToMovie(MovieType movieType, Movie movie); // add movie type to movie
 
     List<MovieType> getAll();   // Read
-    List<Movie> getAllMovieForAMovieTypes(int id); // get all movie list from movie type
+    List<Movie> getAllMovieByMovieTypes(int id); // get all movie list from movie type
 
     MovieType findById(int id); // Read by Id
 //    void update(int id, String type); // Update

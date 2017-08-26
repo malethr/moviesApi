@@ -1,10 +1,12 @@
 package dao;
 
 import models.Movie;
+import models.MovieType;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,6 +43,22 @@ public class Sql2oMovieDao implements MovieDao{
     }
 
     @Override
+    public void deleteById(int id) {
+        String sql = "DELETE FROM movies WHERE id = :id";
+        String deleteJoin = "DELETE FROM movies_movietypes WHERE movieid = :movieid";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeUpdate();
+            con.createQuery(deleteJoin)
+                    .addParameter("movieid", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+    }
+
+    @Override
     public Movie findById(int id) {
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM movies WHERE id = :id")
@@ -68,15 +86,39 @@ public class Sql2oMovieDao implements MovieDao{
     }
 
     @Override
-    public void deleteById(int id) {
-        String sql = "DELETE FROM movies WHERE id = :id"; //raw sql
+    public void addMovieToMovieType(Movie movie, MovieType movieType){
+        String sql = "INSERT INTO movies_movietypes (movieid, movietypeid) VALUES (:movieid, :movietypeid)";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
-                    .addParameter("id", id)
+                    .addParameter("movieid", movie.getId())
+                    .addParameter("movietypeid", movieType.getId())
                     .executeUpdate();
         } catch (Sql2oException ex){
             System.out.println(ex);
         }
+    }
+
+    @Override
+    public List <MovieType> getAllMovieTypesForAMovie(int movieId) {
+        ArrayList<MovieType> movieTypes = new ArrayList<>();
+
+        String joinQuery = "SELECT movietypeid FROM movies_movietypes WHERE movieid = :movieid";
+
+        try (Connection con = sql2o.open()) {
+            List<Integer> allMovieTypesIds = con.createQuery(joinQuery)
+                    .addParameter("movieid", movieId)
+                    .executeAndFetch(Integer.class);
+            for (Integer typeId : allMovieTypesIds){
+                String movietypeQuery = "SELECT * FROM movietypes WHERE id = :movietypeid";
+                movieTypes.add(
+                        con.createQuery(movietypeQuery)
+                                .addParameter("movietypeid", typeId)
+                                .executeAndFetchFirst(MovieType.class));
+            }
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+        return movieTypes;
     }
 
 }

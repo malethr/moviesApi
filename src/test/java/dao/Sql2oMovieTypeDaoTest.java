@@ -1,5 +1,6 @@
 package dao;
 
+import models.Movie;
 import models.MovieType;
 import org.junit.After;
 import org.junit.Before;
@@ -73,6 +74,51 @@ public class Sql2oMovieTypeDaoTest {
         assertNotEquals(testMovieType,movieTypeDao.findById(testMovieType.getId()));
     }
 
+    @Test
+    public void addMovieTypeToMovieAddsTypeCorrectly() throws Exception {
+
+        Movie testMovie = setupMovie();
+        Movie altMovie = setupAltMovie();
+
+        movieDao.add(testMovie);
+        movieDao.add(altMovie);
+
+        MovieType testMovieType = setupMovieType();
+
+        movieTypeDao.add(testMovieType);
+
+        movieTypeDao.addMovieTypeToMovie(testMovieType, testMovie);
+        movieTypeDao.addMovieTypeToMovie(testMovieType, altMovie);
+
+        assertEquals(2, movieTypeDao.getAllMovieByMovieTypes(testMovieType.getId()).size());
+    }
+
+    @Test
+    public void deleteingMovietypeAlsoUpdatesJoinTable() throws Exception {
+
+        Movie testMovie = setupMovie();
+        movieDao.add(testMovie);
+
+        MovieType testMovieType = setupMovieType();
+        MovieType otherFoodType = setupAltMovieType();
+
+        movieTypeDao.add(testMovieType);
+        movieTypeDao.add(otherFoodType);
+
+        movieTypeDao.addMovieTypeToMovie(testMovieType, testMovie);
+        movieTypeDao.addMovieTypeToMovie(otherFoodType, testMovie);
+
+        movieTypeDao.deleteById(testMovie.getId());
+        assertEquals(0, movieTypeDao.getAllMovieByMovieTypes(testMovieType.getId()).size());
+    }
+
+    public Movie setupMovie (){
+        return new Movie("Inside Job","Academy award winning documentary and for me the best movie on the Financial crisis made.","2010","Charles Ferguson","https://www.youtube.com/watch?v=Dzs3Xwnf9Pw");
+    }
+
+    public Movie setupAltMovie (){
+        return new Movie("Inside Job","Academy award winning documentary and for me the best movie on the Financial crisis made.");
+    }
 
     public MovieType setupMovieType (){
         return new MovieType("Finance");

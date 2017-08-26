@@ -1,10 +1,12 @@
 package dao;
 
+import models.Movie;
 import models.MovieType;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,12 +54,50 @@ public class Sql2oMovieTypeDao implements MovieTypeDao{
     @Override
     public void deleteById(int id) {
         String sql = "DELETE FROM movietypes WHERE id = :id";
+        String deleteJoin = "DELETE FROM movies_movietypes WHERE movietypeid = :movietypeid";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
                     .executeUpdate();
+            con.createQuery(deleteJoin)
+                    .addParameter("movietypeid", id)
+                    .executeUpdate();
         } catch (Sql2oException ex){
             System.out.println(ex);
         }
+    }
+
+    @Override
+    public void addMovieTypeToMovie(MovieType movieType, Movie movie) {
+        String sql = "INSERT INTO movies_movietypes (movieid, movietypeid) VALUES (:movieid, :movietypeid)";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("movieid", movie.getId())
+                    .addParameter("movietypeid", movieType.getId())
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    @Override
+    public List<Movie> getAllMovieByMovieTypes(int movietypeid) {
+        ArrayList<Movie> restaurants = new ArrayList<>();
+        String joinQuery = "SELECT movieid FROM movies_movietypes WHERE movietypeid = :movietypeid";
+        try (Connection con = sql2o.open()) {
+            List<Integer> allMovieIds = con.createQuery(joinQuery)
+                    .addParameter("movietypeid", movietypeid)
+                    .executeAndFetch(Integer.class); //what is happening in the lines above?
+            for (Integer movieid : allMovieIds) {
+                String restaurantQuery = "SELECT * FROM restaurants WHERE id = :movieid";
+                restaurants.add(
+                        con.createQuery(restaurantQuery)
+                                .addParameter("movieid", movieid)
+                                .executeAndFetchFirst(Movie.class));
+            }
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+        return restaurants;
     }
 }

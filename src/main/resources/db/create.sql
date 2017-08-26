@@ -22,3 +22,9 @@ CREATE TABLE IF NOT EXISTS reviews (
  createdat TIMESTAMP,
  movieid INTEGER
 );
+
+CREATE TABLE IF NOT EXISTS movies_movietypes(
+ id int PRIMARY KEY auto_increment,
+ movieid INTEGER,
+ movietypeid INTEGER
+);

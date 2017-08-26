@@ -1,5 +1,6 @@
 package dao;
 
+import models.Movie;
 import models.MovieType;
 
 import java.util.List;
@@ -10,11 +11,12 @@ import java.util.List;
 public interface MovieTypeDao {
 
     void add(MovieType movieType);  // Create
+    void addMovieTypeToMovie(MovieType movieType, Movie movie); // add movie type to movie
+
     List<MovieType> getAll();   // Read
+    List<Movie> getAllMovieForAMovieTypes(int id); // get all movie list from movie type
+
     MovieType findById(int id); // Read by Id
 //    void update(int id, String type); // Update
-    void deleteById(int id);// Delete
-
-//    void addMovieTypeToMovie(MovieType movieType, Movie movie); // add movie type to movie
-//    List<Movie> getAllMovieForAMovieTypes(int id); // get all movie list from movie type
+    void deleteById(int id);    // Delete
 }

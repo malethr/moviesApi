@@ -10,11 +10,12 @@ import java.util.List;
 public interface MovieDao {
 
     void add(Movie movie);  // Create
+    void addMovieToMovieType(Movie movie, MovieTypeDao movieType);
+
     List<Movie> getAll();   // Read
+    List<MovieTypeDao> getAllMovieTypesForAMovie(int movieId);
+
     Movie findById(int id); // Read by Id
     void update(int id, String title, String description, String year, String director, String trailer); // Update
     void deleteById(int id);// Delete
-
-//    void addMovieToMovieType(Movie movie, MovieTypeDao movieType);
-//    List<MovieTypeDao> getAllMovieTypesForAMovie(int movieId);
 }

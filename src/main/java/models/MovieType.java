@@ -7,16 +7,15 @@ public class MovieType {
     private String type;
     private int id;
 
-    public MovieType(String type, int id) {
+    public MovieType(String type) {
         this.type = type;
-        this.id = id;
     }
 
-    public String getName() {
+    public String getType() {
         return type;
     }
 
-    public void setName(String type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -45,6 +44,4 @@ public class MovieType {
         result = 31 * result + id;
         return result;
     }
-
-
 }

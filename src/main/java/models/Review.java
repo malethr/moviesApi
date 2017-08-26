@@ -14,13 +14,12 @@ public class Review {
     private int movieId;
     private String content;
 
-    public Review(String writtenBy, int rating, Timestamp createdAt, int id, int movieId, String content) {
+    public Review(String writtenBy, int rating, String content, int movieId) {
         this.writtenBy = writtenBy;
         this.rating = rating;
         this.createdAt = Timestamp.valueOf(LocalDateTime.now());
-        this.id = id;
-        this.movieId = movieId;
         this.content = content;
+        this.movieId = movieId;
     }
 
     public String getWrittenBy() {
@@ -69,29 +68,5 @@ public class Review {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Review review = (Review) o;
-
-        if (rating != review.rating) return false;
-        if (id != review.id) return false;
-        if (movieId != review.movieId) return false;
-        if (!writtenBy.equals(review.writtenBy)) return false;
-        return content.equals(review.content);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = writtenBy.hashCode();
-        result = 31 * result + rating;
-        result = 31 * result + id;
-        result = 31 * result + movieId;
-        result = 31 * result + content.hashCode();
-        return result;
     }
 }

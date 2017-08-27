@@ -17,6 +17,6 @@ public interface MovieDao {
     List<MovieType> getAllMovieTypesForAMovie(int movieId);
 
     Movie findById(int id); // Read by Id
-    void update(int id, String title, String description, String year, String director, String trailer); // Update
+    void update(int id, String title, String description, String myear, String director, String trailer); // Update
     void deleteById(int id);// Delete
 }

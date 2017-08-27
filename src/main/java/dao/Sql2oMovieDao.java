@@ -22,7 +22,7 @@ public class Sql2oMovieDao implements MovieDao{
 
     @Override
     public void add(Movie movie) {
-        String sql = "INSERT INTO movies (title, description, year, director, trailer) VALUES (:title, :description, :year, :director, :trailer)";
+        String sql = "INSERT INTO movies (title, description, myear, director, trailer) VALUES (:title, :description, :myear, :director, :trailer)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql)
                     .bind(movie)
@@ -38,6 +38,7 @@ public class Sql2oMovieDao implements MovieDao{
     public List<Movie> getAll() {
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM movies")
+                    .throwOnMappingFailure(false)
                     .executeAndFetch(Movie.class);
         }
     }
@@ -63,19 +64,20 @@ public class Sql2oMovieDao implements MovieDao{
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM movies WHERE id = :id")
                     .addParameter("id", id)
+                    .throwOnMappingFailure(false)
                     .executeAndFetchFirst(Movie.class);
         }
     }
 
     @Override
-    public void update(int id, String newTitle, String newDescription, String newYear, String newDirector, String newTrailer){
-        String sql = "UPDATE movies SET (title, description, year, director, trailer) = (:title, :description, :year, :director, :trailer) WHERE id=:id";
+    public void update(int id, String newTitle, String newDescription, String newMyear, String newDirector, String newTrailer){
+        String sql = "UPDATE movies SET (title, description, myear, director, trailer) = (:title, :description, :myear, :director, :trailer) WHERE id=:id";
 
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
                     .addParameter("title", newTitle)
                     .addParameter("description", newDescription)
-                    .addParameter("year", newYear)
+                    .addParameter("myear", newMyear)
                     .addParameter("director", newDirector)
                     .addParameter("trailer", newTrailer)
                     .addParameter("id", id)

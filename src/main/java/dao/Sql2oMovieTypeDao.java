@@ -89,10 +89,11 @@ public class Sql2oMovieTypeDao implements MovieTypeDao{
                     .addParameter("movietypeid", movietypeid)
                     .executeAndFetch(Integer.class); //what is happening in the lines above?
             for (Integer movieid : allMovieIds) {
-                String restaurantQuery = "SELECT * FROM restaurants WHERE id = :movieid";
+                String restaurantQuery = "SELECT * FROM movies WHERE id = :movieid";
                 restaurants.add(
                         con.createQuery(restaurantQuery)
                                 .addParameter("movieid", movieid)
+                                .throwOnMappingFailure(false)
                                 .executeAndFetchFirst(Movie.class));
             }
         } catch (Sql2oException ex) {

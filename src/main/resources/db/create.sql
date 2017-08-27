@@ -4,9 +4,10 @@ CREATE TABLE IF NOT EXISTS movies (
  id int PRIMARY KEY auto_increment,
  title VARCHAR,
  description VARCHAR,
- year VARCHAR,
+ myear VARCHAR,
  director VARCHAR,
- trailer VARCHAR
+ trailer VARCHAR,
+ intheaters VARCHAR
 );
 
 CREATE TABLE IF NOT EXISTS movietypes (

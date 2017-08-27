@@ -1,38 +1,41 @@
 package models;
 
-import java.util.Date;
-
 /**
  * Created by mariathomas on 8/26/17.
  */
-public class Studio extends Movie {
+public class UpcomingMovie extends Movie {
 
-    private String name;
-    private int movieId;
+    private String inTheaters;
 
-    public Studio(String title, String description, String year, String director, String trailer) {
-        this.title = title;
-        this.description = description;
-        this.year = year;
-        this.director = director;
-        this.trailer = trailer;
+
+    public UpcomingMovie(String title, String description, String myear, String director, String trailer, String inTheaters) {
+        super(title, description, myear, director, trailer);
+        this.inTheaters=inTheaters;
     }
 
-    public String getName() {
-        return name;
+    public String getInTheaters() {
+        return inTheaters;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setInTheaters(String inTheaters) {
+        this.inTheaters = inTheaters;
     }
 
-    public int getMovieId() {
-        return movieId;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        UpcomingMovie that = (UpcomingMovie) o;
+
+        return inTheaters.equals(that.inTheaters);
     }
 
-    public void setMovieId(int movieId) {
-        this.movieId = movieId;
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + inTheaters.hashCode();
+        return result;
     }
-
-
 }

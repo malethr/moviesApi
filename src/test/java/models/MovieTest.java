@@ -34,7 +34,7 @@ public class MovieTest {
     @Test
     public void getYearReturnsCorrectYear() throws Exception {
         Movie testMovie = setupMovie();
-        assertEquals("2010", testMovie.getYear());
+        assertEquals("2010", testMovie.getMyear());
     }
     @Test
     public void getDirectorReturnsCorrectDirector() throws Exception {
@@ -65,8 +65,8 @@ public class MovieTest {
     @Test
     public void setYearSetsCorrectYear() throws Exception {
         Movie testMovie = setupMovie();
-        testMovie.setYear("2013");
-        assertNotEquals("2010", testMovie.getYear());
+        testMovie.setMyear("2013");
+        assertNotEquals("2010", testMovie.getMyear());
     }
     @Test
     public void setDirectedBySetsCorrectDirector() throws Exception {

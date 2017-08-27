@@ -1,29 +1,36 @@
 # _Movie API_
 
-#### _API for movies, August 18, 2017_
+#### _API for movies, August 25, 2017_
 
 #### By _**Maria Thomas**_
 
 ## Description
 
-_Provides API for movies._
+This program can add, delete and retrieve movie details. It can also add movie types to movies and vice versa. The program is also capable in receiving reviews and ratings from users.
+
+## Postman
+
+![image of postman1](/images/movie.png "Adding movie")
+
+![image of postman2](/images/movie.png "Retrieving movie not on the list")
+
 
 ## Development Specifications
 
 | Behavior      | Input | Output |
 | ------------- | ------------- | ------------- |
-| Program will register team name| Dream Team  | Team 1: Dream Team  |
-| Program will add members to corresponding team | Jane Doe | Dream Team Members: Jane Doe |
-| Program will display list of registered teams  | Dream Team, Awesome Team  | Team 1: Dream Team, Team 2: Awesome Team  |
-| Program will delete selected team  | Dream Team - delete  | Team 2: Awesome Team  |
-| Program will delete selected member  | Jane Doe - delete  | Dream Team Members: none  |
-| Program will reset all | none | none  |
+| Program will add movie info| title: "Inside Job", description: "Academy award winning documentary", year: "2010", director: "Charles Ferguson", trailer: "trailer.avi"| title: "Inside Job", description: "Academy award winning documentary", year: "2010", director: "Charles Ferguson", trailer: "trailer.avi", id: 1  |
+| Program will display list of movies added  | "Inside Job" ..... "Bourne" ....  | "Inside Job" ..... "Bourne" ....  |
+| Program will add movie type | Action  | Movietype: Action, movieTypeid: 1  |
+| Program will accept review from user | Awesome movie | "Awesome Movie", reviewId:1, movieId:1|
+| Program will delete movie info | delete movieId: 1 | no value for movieId:1 |
+| Program will delete movie type | delete movieTypeId: 1 | no value for movietypeId:1  |
 
 ## Setup/Installation Requirements
 
 * _Clone this repository_
 * _For a mac, run the following command in your terminal:
-git clone (https://github.com/malethr/teamTracker)_
+git clone (https://github.com/malethr/moviesApi)_
 * _Open the folder and click the file in your intelliJ application._
 
 ## Support and contact details
@@ -38,5 +45,6 @@ _Java_
 _GitHub_
 _SQL_
 _Spark_
+_JSON_
 
 ### License

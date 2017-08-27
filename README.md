@@ -9,11 +9,10 @@
 This program can add, delete and retrieve movie details. It can also add movie types to movies and vice versa. The program is also capable in receiving reviews and ratings from users.
 
 ## Postman
-
+* _Adding Movie_
 ![image of postman1](https://github.com/malethr/moviesApi/blob/master/src/main/resources/images/movie.png?raw=true "Adding movie")
-
+* _Retriving movie not on the list_
 ![image of postman2](https://github.com/malethr/moviesApi/blob/master/src/main/resources/images/no%20movie%20listed.png?raw=true "Retrieving movie not on the list")
-
 
 ## Development Specifications
 

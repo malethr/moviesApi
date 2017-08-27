@@ -20,7 +20,6 @@ CREATE TABLE IF NOT EXISTS reviews (
  writtenby VARCHAR,
  rating VARCHAR,
  content VARCHAR,
- createdat TIMESTAMP,
  movieid INTEGER
 );
 

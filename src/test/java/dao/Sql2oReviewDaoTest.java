@@ -38,7 +38,7 @@ public class Sql2oReviewDaoTest {
     public void addingReviewSetsId() throws Exception {
         Movie testMovie = setupMovie();
         movieDao.add(testMovie);
-        Review testReview = new Review("Jane Doe",3,"Good Movie",testMovie.getId());
+        Review testReview = new Review("Jane Doe","3","Good Movie",testMovie.getId());
         int originalReviewId = testReview.getId();
         reviewDao.add(testReview);
         assertNotEquals(originalReviewId,testReview.getId());
@@ -50,12 +50,26 @@ public class Sql2oReviewDaoTest {
         movieDao.add(testMovie);
         Movie newMovie = setupAltMovie();
         movieDao.add(newMovie);
-        Review testReview = new Review("Jane Doe",3,"Good Movie", testMovie.getId());
+        Review testReview = new Review("Jane Doe","3","Good Movie", testMovie.getId());
         reviewDao.add(testReview);
-        Review otherReview = new Review("John Smith",1,"Bad Movie", testMovie.getId());
+        Review otherReview = new Review("John Smith","1","Bad Movie", testMovie.getId());
         reviewDao.add(otherReview);
         assertEquals(2, reviewDao.getAllReviewsByMovie(testMovie.getId()).size());
         assertEquals(0, reviewDao.getAllReviewsByMovie(newMovie.getId()).size());
+    }
+
+    @Test
+    public void deleteReviewById() throws Exception {
+        Movie testMovie = setupMovie();
+        movieDao.add(testMovie);
+        Movie newMovie = setupAltMovie();
+        movieDao.add(newMovie);
+        Review testReview = new Review("Jane Doe","3","Good Movie", testMovie.getId());
+        reviewDao.add(testReview);
+        Review otherReview = new Review("John Smith","1","Bad Movie", testMovie.getId());
+        reviewDao.add(otherReview);
+        reviewDao.deleteReviewById(testReview.getId());
+        assertEquals(1, reviewDao.getAllReviewsByMovie(testMovie.getId()).size());
     }
 
     public Movie setupMovie (){

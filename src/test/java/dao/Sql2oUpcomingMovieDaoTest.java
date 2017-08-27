@@ -57,10 +57,10 @@ public class Sql2oUpcomingMovieDaoTest {
     }
 
     @Test
-    public void existingUpcomingMoviesCanBeFoundById() throws Exception {
+    public void existingUpcomingMoviesCanBeFoundByYear() throws Exception {
         UpcomingMovie testUpcomingMovie = setupMovie();
         upcomingMovieDao.add(testUpcomingMovie);
-        UpcomingMovie foundUpcomingMovie = upcomingMovieDao.findUpcomingMovieById(testUpcomingMovie.getId());
+        UpcomingMovie foundUpcomingMovie = upcomingMovieDao.findUpcomingMovieByYear(testUpcomingMovie.getMyear());
         assertEquals(testUpcomingMovie, foundUpcomingMovie);
     }
 

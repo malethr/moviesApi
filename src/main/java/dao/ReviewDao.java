@@ -12,5 +12,5 @@ public interface ReviewDao {
     void add(Review review);  // Create
     List<Review> getAllReviewsByMovie(int movieId);   // Read
     //    void update(int id, String name); // Update
-    void deleteById(int id);// Delete
+    void deleteReviewById(int id);// Delete
 }

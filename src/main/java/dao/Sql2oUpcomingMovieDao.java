@@ -59,6 +59,16 @@ public class Sql2oUpcomingMovieDao implements UpcomingMovieDao{
     }
 
     @Override
+    public UpcomingMovie findUpcomingMovieByYear(String myear) {
+        try(Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM movies WHERE myear = :myear")
+                    .addParameter("myear", myear)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetchFirst(UpcomingMovie.class);
+        }
+    }
+
+    @Override
     public UpcomingMovie findUpcomingMovieById(int id) {
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM movies WHERE id = :id")

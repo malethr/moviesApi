@@ -1,27 +1,20 @@
 package models;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.Date;
-
 /**
  * Created by mariathomas on 8/25/17.
  */
 public class Review {
 
     private String writtenBy;
-    private int rating;
-    private Timestamp createdAt;
+    private String rating;
     private int id;
     private int movieId;
     private String content;
 
 
-    public Review(String writtenBy, int rating, String content, int movieId) {
+    public Review(String writtenBy, String rating, String content, int movieId) {
         this.writtenBy = writtenBy;
         this.rating = rating;
-        this.createdAt =  Timestamp.valueOf(LocalDateTime.now());
         this.content = content;
         this.movieId = movieId;
     }
@@ -34,23 +27,12 @@ public class Review {
         this.writtenBy = writtenBy;
     }
 
-    public int getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(String rating) {
         this.rating = rating;
-    }
-
-    public String getCreatedAt() {
-        Date createdAtAsDate = this.createdAt;
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String formattedDate = sdf.format(createdAtAsDate);
-        return formattedDate;
-    }
-
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
     }
 
     public int getId() {

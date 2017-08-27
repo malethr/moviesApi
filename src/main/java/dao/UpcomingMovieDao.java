@@ -12,6 +12,7 @@ public interface UpcomingMovieDao{
 
     List<UpcomingMovie> getAll(String nextYear);   // Read
 
+    UpcomingMovie findUpcomingMovieByYear(String myear);
     UpcomingMovie findUpcomingMovieById(int id); // Read by Id
     void updateUpcomingMovie(int id, String title, String description, String myear, String director, String trailer, String inTheaters); // Update
     void deleteUpcomingMovieById(int id);// Delete

@@ -100,4 +100,5 @@ public class Movie {
         result = 31 * result + id;
         return result;
     }
+
 }

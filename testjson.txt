@@ -1,0 +1,24 @@
+
+//MOVIE
+localhost:4567/movies/new
+{
+	"title": "Inside Job",
+	"description": "Academy award winning documentary and for me the best movie on the Financial crisis made.",
+	"myear": "2010",
+	"director": "Charles Ferguson",
+	"trailer":"https://www.youtube.com/watch?v=Dzs3Xwnf9Pw"
+}
+
+//REVIEW
+localhost:4567/movies/1/reviews/new
+{
+ "writtenBy": "Jane Doe",
+ "rating": "5",
+ "content": "Awesome"
+}
+
+//MOVIE TYPE
+localhost:4567/movietypes/new
+{
+ "content": "Awesome"
+}
